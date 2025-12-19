@@ -178,7 +178,7 @@ process.on('SIGINT', async () => {
   console.error('Shutting down server...');
 
   // Close all active transports to properly clean up resources
-  for (const sessionId in transports) {
+  for (const sessionId of transports.keys()) {
     try {
       console.error(`Closing transport for session ${sessionId}`);
       await transports.get(sessionId)!.close();
